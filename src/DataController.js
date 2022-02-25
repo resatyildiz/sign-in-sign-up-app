@@ -1,6 +1,8 @@
-const DataController = (function () {
-    const URL = "../data/users.json"
+// import JsonData from "../data/users.json";
 
+const DataController = () => {
+
+    debugger
     async function getData() {
         var response = await fetch(URL)
         var data = await response.text()
@@ -9,17 +11,20 @@ const DataController = (function () {
     }
 
     async function postData(data) {
-        var response = await fetch(URL, {
+        await fetch(URL, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json'
             },
             body: JSON.stringify(data)
-        }).then(response => response.json()).then(data => console.log(data)).catch(err => console.log(err))
+        }).then(response => {
+            var data = response.json();
+            console.log(data);
+        }).catch(err => console.log(err))
     }
 
     return {
         getData,
         postData
     }
-})()
+};

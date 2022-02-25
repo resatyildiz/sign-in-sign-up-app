@@ -11,8 +11,6 @@ const UIController = (function () {
         container.classList.remove("right-panel-active");
     });
 
-
-
     return {
 
     }
